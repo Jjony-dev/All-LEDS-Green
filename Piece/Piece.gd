@@ -8,6 +8,7 @@ export (Color) var color_off : = Color.red
 var on : bool = true setget set_on, is_on
 onready var anim_color_time : = $ColorAnim
 
+
 func _ready():
 	modulate = color_default
 	random_color_anim(3)
