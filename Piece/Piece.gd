@@ -1,5 +1,7 @@
 extends TouchScreenButton
 
+signal piece_pressed(this_node)
+
 export (Color) var color_default : = Color.white
 export (Color) var color_on : = Color.green
 export (Color) var color_off : = Color.red
@@ -25,7 +27,6 @@ func switch_LED() -> void:
 #@Param time is animation duration
 func random_color_anim(time : float = 5.0) -> void:
 	disconnect("pressed", self, "_on_Piece_pressed")
-	set_process_internal(false)
 	while time >= 0:
 		anim_color_time.start()
 		yield(anim_color_time,"timeout")
@@ -53,3 +54,4 @@ func get_size() -> float:
 #Change Piece color when is pressed
 func _on_Piece_pressed():
 	switch_LED()
+	emit_signal("piece_pressed", self)
