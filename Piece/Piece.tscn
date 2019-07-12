@@ -9,9 +9,10 @@ radius = 16.0
 [node name="Piece" type="TouchScreenButton"]
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 2 )
 
 [node name="ColorAnim" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 [connection signal="pressed" from="." to="." method="_on_Piece_pressed"]

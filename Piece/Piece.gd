@@ -5,7 +5,7 @@ signal piece_pressed(this_node)
 export (Color) var color_default : = Color.white
 export (Color) var color_on : = Color.green
 export (Color) var color_off : = Color.red
-var on : bool = true
+var on : bool = true setget set_on, is_on
 onready var anim_color_time : = $ColorAnim
 
 func _ready():
@@ -13,14 +13,21 @@ func _ready():
 	random_color_anim(3)
 
 
+func set_on(_on : bool) -> void:
+	on = _on
+	if on:
+		modulate = color_on
+	else:
+		modulate = color_off
+
+
+func is_on() -> bool:
+	return on
+
+
 #Switch between on/off
 func switch_LED() -> void:
-	if on:
-		modulate = color_off
-		on = false
-	else:
-		modulate = color_on
-		on = true
+	set_on(!on)
 
 
 #Change color piece randomly (not change var on)
@@ -38,6 +45,7 @@ func random_color_anim(time : float = 5.0) -> void:
 				modulate = color_off
 	if connect("pressed", self, "_on_Piece_pressed"):
 		print_debug("error connetion -> signal: pressed")
+	set_on(is_on())
 
 
 func set_board_pos(board_pos : Vector2) -> void:
@@ -50,7 +58,8 @@ func get_board_pos()-> Vector2:
 
 func get_size() -> float:
 	return normal.get_size().x
-	
+
+
 #Change Piece color when is pressed
 func _on_Piece_pressed():
 	switch_LED()
