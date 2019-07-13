@@ -1,0 +1,118 @@
+[gd_scene format=2]
+
+[node name="GameHUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxC" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginC" type="MarginContainer" parent="VBoxC"]
+margin_right = 320.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="HBoxC" type="HBoxContainer" parent="VBoxC/MarginC"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Reset" type="Button" parent="VBoxC/MarginC/HBoxC"]
+margin_right = 80.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+text = "Reintenter"
+
+[node name="Space" type="Control" parent="VBoxC/MarginC/HBoxC"]
+margin_left = 84.0
+margin_right = 204.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Options" type="Button" parent="VBoxC/MarginC/HBoxC"]
+margin_left = 208.0
+margin_right = 288.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+text = "Opciones"
+
+[node name="MarginC2" type="MarginContainer" parent="VBoxC"]
+margin_top = 94.0
+margin_right = 320.0
+margin_bottom = 455.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginC3" type="MarginContainer" parent="VBoxC"]
+margin_top = 459.0
+margin_right = 320.0
+margin_bottom = 640.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="CenterC" type="VBoxContainer" parent="VBoxC/MarginC3"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 149.0
+
+[node name="HBoxC" type="HBoxContainer" parent="VBoxC/MarginC3/CenterC"]
+margin_right = 256.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TagMoves" type="Label" parent="VBoxC/MarginC3/CenterC/HBoxC"]
+margin_top = 21.0
+margin_right = 126.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "Movimientos: "
+align = 2
+
+[node name="Moves" type="Label" parent="VBoxC/MarginC3/CenterC/HBoxC"]
+margin_left = 130.0
+margin_top = 21.0
+margin_right = 256.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "4"
+
+[node name="HBoxC2" type="HBoxContainer" parent="VBoxC/MarginC3/CenterC"]
+margin_top = 60.0
+margin_right = 256.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TagTime" type="Label" parent="VBoxC/MarginC3/CenterC/HBoxC2"]
+margin_top = 21.0
+margin_right = 126.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "Movimientos: "
+align = 2
+
+[node name="Time" type="Label" parent="VBoxC/MarginC3/CenterC/HBoxC2"]
+margin_left = 130.0
+margin_top = 21.0
+margin_right = 256.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "15.85 seg"

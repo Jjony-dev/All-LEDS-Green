@@ -2,11 +2,13 @@
 
 [ext_resource path="res://Board/Board.gd" type="Script" id=1]
 
-[node name="Board" type="Node2D"]
+[node name="Board" type="Control"]
 script = ExtResource( 1 )
-board_px_size = 320
+board_px_size = 120
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 256.0
-margin_bottom = 256.0
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
 color = Color( 0.466667, 0.466667, 0.466667, 1 )

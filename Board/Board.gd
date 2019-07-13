@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var Piece : = preload("res://Piece/Piece.tscn")
 export (int,3,6) var board_size : = 3
@@ -8,12 +8,15 @@ var ready_match : bool = false
 var positions : Array = []
 var random : RandomNumberGenerator
 
+onready var color_rect : = $ColorRect
+
 
 func _ready():
 	random = RandomNumberGenerator.new()
 	random.seed = 12345
 	scale_factor = board_px_size / float(board_size)
-	$ColorRect.rect_size = Vector2(board_px_size, board_px_size)
+	color_rect.rect_size = Vector2(board_px_size, board_px_size)
+	color_rect.rect_position = Vector2( -board_px_size / 2.0, -board_px_size / 2.0)
 	init_board()
 
 
@@ -27,7 +30,7 @@ func init_board() -> void:
 			if piece.connect("piece_pressed", self, "_Piece_on_Board_pressed"):
 				print_debug("error connetion -> signal: piece_pressed")
 			positions[r].append(piece)
-			add_child(positions[r][c])
+			color_rect.add_child(positions[r][c])
 	start_match()
 
 
@@ -66,7 +69,6 @@ func won() -> bool:
 			if !positions[r][c].is_on():
 				return false
 	return true
-	
 
 
 func _Piece_on_Board_pressed(_piece : Node2D) -> void:
