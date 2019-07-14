@@ -4,7 +4,6 @@
 
 [node name="Board" type="Control"]
 script = ExtResource( 1 )
-board_px_size = 120
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -128.0

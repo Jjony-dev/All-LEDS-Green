@@ -1,8 +1,15 @@
 extends Control
 
+signal level_completed(current_level)
+signal all_completed
+signal piece_touched(moves_amount)
+
+
+const MAX_BOARD_SIZE : = 7
 var Piece : = preload("res://Piece/Piece.tscn")
-export (int,3,6) var board_size : = 3
-export (int) var board_px_size : = 256
+export (int,3,7) var board_size : = 3 setget set_board_size
+export (int) var board_px_size : = 256 setget set_board_px_size
+var moves : int = 0 setget set_moves
 var scale_factor : float = 1.0
 var ready_match : bool = false
 var positions : Array = []
@@ -11,16 +18,43 @@ var random : RandomNumberGenerator
 onready var color_rect : = $ColorRect
 
 
-func _ready():
-	random = RandomNumberGenerator.new()
-	random.seed = 12345
+func set_moves(amount : int) -> void:
+	moves = amount
+	emit_signal("piece_touched", moves)
+
+
+func update_scale() -> void:
+	if board_size == 0:
+		return
 	scale_factor = board_px_size / float(board_size)
-	color_rect.rect_size = Vector2(board_px_size, board_px_size)
-	color_rect.rect_position = Vector2( -board_px_size / 2.0, -board_px_size / 2.0)
+	
+func set_board_size(_new_size : int) -> void:
+	board_size = _new_size
+	update_scale()
 	init_board()
 
 
+func set_board_px_size(_new_px_size : int) -> void:
+	board_px_size = _new_px_size
+	update_scale()
+	if !is_inside_tree():
+		yield(self, "ready")
+	color_rect.rect_size = Vector2(board_px_size, board_px_size)
+	color_rect.rect_position = Vector2( -board_px_size / 2.0, -board_px_size / 2.0)
+
+
+func _ready():
+	random = RandomNumberGenerator.new()
+	random.randomize()
+	set_board_px_size(board_px_size)
+
+
 func init_board() -> void:
+	if !is_inside_tree():
+		yield(self, "ready")
+	positions.clear()
+	for n in color_rect.get_children():
+		n.queue_free()
 	for r in board_size:
 		positions.append([])
 		for c in board_size:
@@ -42,6 +76,8 @@ func start_match() -> void:
 				random.randi() % board_size)
 		positions[random_positon.x][random_positon.y]._on_Piece_pressed()
 	ready_match = true
+	if won():
+		start_match()
 
 
 func switch_neighbors(_piece : Node2D) -> void:
@@ -73,5 +109,11 @@ func won() -> bool:
 
 func _Piece_on_Board_pressed(_piece : Node2D) -> void:
 	switch_neighbors(_piece)
-	if ready_match and won():
-		print("Congratulations!!!")
+	if ready_match:
+		set_moves(moves + 1)
+		if won():
+			if board_size < MAX_BOARD_SIZE:
+				emit_signal("level_completed", board_size)
+				set_board_size(board_size + 1)
+			else:
+				emit_signal("all_completed")
