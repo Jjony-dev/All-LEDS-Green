@@ -33,3 +33,9 @@ func _on_Reset_pressed():
 
 func show_win_message() -> void:
 	win_message.show_win(moves.text)
+
+func move():
+	
+	pass
+
+

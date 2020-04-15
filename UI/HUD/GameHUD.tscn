@@ -9,12 +9,11 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="VBoxC" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ButtonsContainer" type="MarginContainer" parent="VBoxC"]
-margin_right = 320.0
+margin_right = 360.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -27,39 +26,39 @@ custom_constants/margin_bottom = 16
 [node name="HBoxC" type="HBoxContainer" parent="VBoxC/ButtonsContainer"]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 304.0
+margin_right = 344.0
 margin_bottom = 74.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Reset" type="Button" parent="VBoxC/ButtonsContainer/HBoxC"]
-margin_right = 113.0
+margin_right = 129.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 text = "Reset"
 
 [node name="Space" type="Control" parent="VBoxC/ButtonsContainer/HBoxC"]
-margin_left = 117.0
-margin_right = 288.0
+margin_left = 133.0
+margin_right = 328.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
 [node name="GameContainer" type="MarginContainer" parent="VBoxC"]
 margin_top = 94.0
-margin_right = 320.0
+margin_right = 360.0
 margin_bottom = 455.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
 [node name="CenterC" type="CenterContainer" parent="VBoxC/GameContainer"]
-margin_right = 320.0
+margin_right = 360.0
 margin_bottom = 361.0
 
 [node name="InfoContainer" type="MarginContainer" parent="VBoxC"]
 margin_top = 459.0
-margin_right = 320.0
+margin_right = 360.0
 margin_bottom = 640.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -71,49 +70,49 @@ custom_constants/margin_bottom = 32
 [node name="CenterC" type="VBoxContainer" parent="VBoxC/InfoContainer"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 288.0
+margin_right = 328.0
 margin_bottom = 149.0
 
 [node name="HBoxC" type="HBoxContainer" parent="VBoxC/InfoContainer/CenterC"]
-margin_right = 256.0
+margin_right = 296.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TagMoves" type="Label" parent="VBoxC/InfoContainer/CenterC/HBoxC"]
 margin_top = 21.0
-margin_right = 126.0
+margin_right = 146.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 text = "Movimientos: "
 align = 2
 
 [node name="Moves" type="Label" parent="VBoxC/InfoContainer/CenterC/HBoxC"]
-margin_left = 130.0
+margin_left = 150.0
 margin_top = 21.0
-margin_right = 256.0
+margin_right = 296.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 
 [node name="HBoxC2" type="HBoxContainer" parent="VBoxC/InfoContainer/CenterC"]
 margin_top = 60.0
-margin_right = 256.0
+margin_right = 296.0
 margin_bottom = 117.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TagLevel" type="Label" parent="VBoxC/InfoContainer/CenterC/HBoxC2"]
 margin_top = 21.0
-margin_right = 126.0
+margin_right = 146.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 text = "Level: "
 align = 2
 
 [node name="Level" type="Label" parent="VBoxC/InfoContainer/CenterC/HBoxC2"]
-margin_left = 130.0
+margin_left = 150.0
 margin_top = 21.0
-margin_right = 256.0
+margin_right = 296.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 

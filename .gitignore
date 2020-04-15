@@ -6,3 +6,9 @@ export_presets.cfg
 
 # Mono-specific ignores
 .mono/
+
+#GIT plugin
+bin/
+godot-git-plugin/
+git_api.gdnlib
+git_api.gdns
